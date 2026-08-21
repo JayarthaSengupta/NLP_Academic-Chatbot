@@ -55,71 +55,7 @@ The project also includes a **Streamlit-based interactive dashboard** for visual
 
 ## System Architecture
 
-                              ┌─────────────────────┐
-                              │    User Question    │
-                              └──────────┬──────────┘
-                                         │
-                                         ▼
-                              ┌─────────────────────┐
-                              │   Small-Talk Check   │
-                              └───────┬───────┬──────┘
-                                      │       │
-                             Match ───┘       └─── No Match
-                               │                       │
-                               ▼                       ▼
-                    ┌──────────────────┐    ┌─────────────────────┐
-                    │   Canned Reply   │    │  NLP Preprocessing  │
-                    └──────────────────┘    └──────────┬──────────┘
-                                                       │
-                                                       ▼
-                                            ┌─────────────────────┐
-                                            │ TF-IDF Vectorization │
-                                            └──────────┬──────────┘
-                                                       │
-                                                       ▼
-                                            ┌─────────────────────┐
-                                            │  Cosine Similarity  │
-                                            └──────────┬──────────┘
-                                                       │
-                                                       ▼
-                                            ┌─────────────────────┐
-                                            │  Best Dataset Match │
-                                            └──────────┬──────────┘
-                                                       │
-                                                       ▼
-                                            ┌─────────────────────┐
-                                            │ Confidence Scoring  │
-                                            └──────┬──────┬───────┘
-                                                   │      │
-                              ┌────────────────────┼──────┼──────────────────┐
-                              │                    │      │                  │
-                              ▼                    ▼      ▼                  ▼
-                           HIGH                MEDIUM    LOW                NONE
-                              │                    │      │                  │
-                              ▼                    ▼      ▼                  ▼
-                       Direct Answer       Answer +   Best Guess       No Match
-                                          Caveat     + Warning
-                              │                    │      │
-                              └────────────────────┴──────┴──────────────────┘
-                                                   │
-                                                   ▼
-                                      ┌────────────────────────┐
-                                      │    Result Logging      │
-                                      │ Query • Score • Tier   │
-                                      │ Match • Answered      │
-                                      └───────────┬────────────┘
-                                                  │
-                                                  ▼
-                                      ┌────────────────────────┐
-                                      │  Streamlit Analysis    │
-                                      ├────────────────────────┤
-                                      │ • Score Distribution   │
-                                      │ • Confidence Breakdown │
-                                      │ • Query Performance    │
-                                      │ • Cumulative Accuracy  │
-                                      │ • Detailed Results     │
-                                      │ • CSV Export            │
-                                      └────────────────────────┘
+![System Architecture](NLP_Academic_Chatbot/System_Architecture.png)
 
 ## NLP Pipeline
 
