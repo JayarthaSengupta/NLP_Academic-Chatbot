@@ -1,177 +1,184 @@
-# Academic NLP Chatbot
+# 🤖 Academic NLP Chatbot
 
-An academic question-answering chatbot built using **Natural Language Processing (NLP)** and **Machine Learning** techniques. The system matches user questions against a predefined knowledge base using **TF-IDF vectorization** and **Cosine Similarity**, then returns the answer associated with the most relevant question.
+<p align="center">
+  A lightweight academic question-answering chatbot built using <b>Natural Language Processing</b>, <b>TF-IDF</b>, and <b>Cosine Similarity</b>.
+</p>
 
-The project also includes a **Streamlit-based interactive dashboard** for visualizing similarity scores, confidence levels, query accuracy, and matching results.
-
-## Features
-
-* **NLP-based question matching**
-
-  * Converts questions into normalized tokens.
-  * Removes English stopwords and punctuation.
-  * Applies WordNet lemmatization.
-
-* **TF-IDF Vectorization**
-
-  * Converts the processed dataset questions into numerical feature vectors.
-  * The vectors are generated once when the chatbot starts.
-
-* **Cosine Similarity Matching**
-
-  * Compares the user's question against every question in the dataset.
-  * Selects the question with the highest similarity score.
-
-* **Confidence Classification**
-
-  * Classifies matches into four confidence levels:
-
-    * **High:** ≥ 0.55
-    * **Medium:** ≥ 0.30
-    * **Low:** ≥ 0.10
-    * **None:** < 0.10
-
-* **Top-3 Matching Questions**
-
-  * Displays the three highest-scoring dataset questions for each query.
-
-* **Conversational Responses**
-
-  * Supports basic greetings, thanks, and goodbye messages without running them through the NLP matching pipeline.
-
-* **Result Analysis Dashboard**
-
-  * Total queries
-  * Answered queries
-  * Average similarity score
-  * Confidence distribution
-  * Per-query similarity scores
-  * Cumulative accuracy
-  * Confidence vs. answered summary
-
-* **CSV Export**
-
-  * Query results can be downloaded for further analysis.
-
-## System Architecture
-
-![System Architecture](NLP_Academic_Chatbot/System_Architecture.png)
-
-## NLP Pipeline
-
-The chatbot applies the following preprocessing steps to both the dataset questions and incoming user queries.
-
-### 1. Lowercasing
-
-All text is converted to lowercase so that words such as:
-
-```text
-Machine Learning
-machine learning
-MACHINE LEARNING
-```
-
-are treated consistently.
-
-### 2. Tokenization
-
-The input sentence is divided into individual tokens using NLTK's tokenizer.
-
-For example:
-
-```text
-"What is machine learning?"
-```
-
-becomes approximately:
-
-```text
-["what", "is", "machine", "learning", "?"]
-```
-
-### 3. Stopword Removal
-
-Common English words that provide relatively little information for matching are removed.
-
-Examples include:
-
-```text
-is
-the
-a
-an
-of
-and
-```
-
-### 4. Punctuation Removal
-
-Punctuation tokens are removed before vectorization.
-
-### 5. Lemmatization
-
-Words are reduced to their dictionary base form using `WordNetLemmatizer`.
-
-For example:
-
-```text
-learning → learning
-cars     → car
-studies  → study
-```
-
-The resulting processed text is then passed to the TF-IDF vectorizer.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python" />
+  <img src="https://img.shields.io/badge/NLP-NLTK-green?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/ML-Scikit--learn-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/UI-Streamlit-red?style=for-the-badge&logo=streamlit" />
+</p>
 
 ---
 
-## TF-IDF
+## 📌 Overview
 
-The project uses `TfidfVectorizer` from Scikit-learn.
+This project is an **academic question-answering chatbot** built using **Natural Language Processing (NLP)** and **Machine Learning techniques**.
+
+The chatbot compares a user's question against a predefined knowledge base using **TF-IDF vectorization** and **Cosine Similarity**, then returns the answer associated with the most relevant question.
+
+The project also includes an interactive **Streamlit dashboard** for visualizing:
+
+* Similarity scores
+* Confidence levels
+* Query accuracy
+* Matching results
+* Query statistics
+
+---
+
+## ✨ Features
+
+| 🧠 NLP Processing   | 🎯 Matching System        | 📊 Analytics            |
+| ------------------- | ------------------------- | ----------------------- |
+| Tokenization        | TF-IDF Vectorization      | Query Statistics        |
+| Stopword Removal    | Cosine Similarity         | Confidence Distribution |
+| Punctuation Removal | Top-3 Matching            | Similarity Scores       |
+| Lemmatization       | Confidence Classification | Cumulative Accuracy     |
+| Text Normalization  | Best Match Selection      | CSV Export              |
+
+### Additional Features
+
+* 💬 **Conversational Responses** — Handles greetings, thanks, and goodbye messages separately from the NLP matching pipeline.
+* 🥇 **Top-3 Matches** — Displays the three highest-scoring questions from the dataset.
+* 📥 **CSV Export** — Allows query results to be downloaded for further analysis.
+* 📊 **Interactive Dashboard** — Provides detailed analytics for queries submitted during the current Streamlit session.
+
+---
+
+# 🏗️ System Architecture
+
+<p align="center">
+  <img src="NLP_Academic_Chatbot/System_Architecture.png" alt="System Architecture" width="100%">
+</p>
+
+---
+
+# 🔄 How It Works
+
+The chatbot processes both dataset questions and user queries through the following pipeline:
+
+```text
+User Question
+      │
+      ▼
+┌─────────────────────┐
+│   Small-Talk Check  │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│     Lowercasing     │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│    Tokenization     │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│ Stopword Removal    │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│ Punctuation Removal │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│    Lemmatization    │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│ TF-IDF Vectorization│
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│  Cosine Similarity  │
+└──────────┬──────────┘
+           ▼
+      Best Match
+           │
+           ▼
+┌─────────────────────┐
+│ Confidence Check    │
+└──────────┬──────────┘
+           ▼
+     Chatbot Response
+```
+
+---
+
+## 🧠 NLP Pipeline
+
+| Step                        | Process                                                 | Example                                 |
+| --------------------------- | ------------------------------------------------------- | --------------------------------------- |
+| **1️⃣ Lowercasing**         | Converts all text to lowercase for consistent matching. | `Machine Learning` → `machine learning` |
+| **2️⃣ Tokenization**        | Splits a sentence into individual tokens.               | `"What is machine learning?"`           |
+| **3️⃣ Stopword Removal**    | Removes common English words with low matching value.   | `is`, `the`, `a`, `of`                  |
+| **4️⃣ Punctuation Removal** | Removes punctuation before vectorization.               | `?`, `!`, `,`                           |
+| **5️⃣ Lemmatization**       | Converts words into their dictionary base form.         | `cars` → `car`                          |
+
+### Example
+
+```text
+Input:
+"What is machine learning?"
+
+↓
+
+Tokens:
+["what", "is", "machine", "learning", "?"]
+```
+
+The processed text is then passed to the **TF-IDF vectorizer**.
+
+---
+
+# 📐 TF-IDF Vectorization
+
+The project uses `TfidfVectorizer` from **Scikit-learn**.
 
 TF-IDF represents each question as a numerical vector based on the importance of its words within the dataset.
-
-The basic formulation is:
 
 ```text
 TF-IDF = Term Frequency × Inverse Document Frequency
 ```
 
-Words that occur frequently across the entire dataset receive less importance, while words that are more distinctive to particular questions receive greater weight.
-
-The TF-IDF matrix for all dataset questions is created once during startup:
+The dataset is vectorized once when the chatbot starts:
 
 ```python
 X = vectorizer.fit_transform(processed_questions)
 ```
 
-When a user asks a question, the same vectorizer transforms the query into the same feature space:
+When a user asks a question:
 
 ```python
 user_vec = vectorizer.transform([processed])
 ```
 
-This allows the query to be compared directly with the dataset questions.
+This allows the user query to be compared directly against every question in the dataset.
 
-## Cosine Similarity
+---
 
-The chatbot uses cosine similarity to measure how similar the user's question is to each question in the knowledge base.
+# 🔍 Cosine Similarity
 
-Conceptually:
+Cosine Similarity measures how similar the user's question is to questions stored in the knowledge base.
 
 ```text
                     A · B
 Cosine Similarity = ───────
-                    |A||B|
+                     |A||B|
 ```
 
 The score generally ranges from:
 
 ```text
-0 → completely different
-1 → identical direction
+0 → Completely Different
+1 → Highly Similar
 ```
 
-The chatbot selects the dataset question with the highest score:
+The chatbot selects the highest-scoring question:
 
 ```python
 score = float(similarity.max())
@@ -182,34 +189,80 @@ The corresponding answer is then retrieved from the dataset.
 
 ---
 
-## Confidence System
+# 🎯 Confidence System
 
 The similarity score is converted into a confidence tier.
 
-|       Score | Confidence | Behaviour                                    |
-| ----------: | ---------- | -------------------------------------------- |
-|      ≥ 0.55 | High       | Answer returned directly                     |
-| 0.30–0.5499 | Medium     | Answer returned with a partial-match warning |
-| 0.10–0.2999 | Low        | Best guess shown with a warning              |
-|      < 0.10 | None       | No answer returned                           |
+|             Score | Confidence | Behaviour                                    |
+| ----------------: | ---------- | -------------------------------------------- |
+|        **≥ 0.55** | 🟢 High    | Answer returned directly                     |
+| **0.30 – 0.5499** | 🟡 Medium  | Answer returned with a partial-match warning |
+| **0.10 – 0.2999** | 🟠 Low     | Best guess shown with a warning              |
+|        **< 0.10** | 🔴 None    | No answer returned                           |
 
-These thresholds are **heuristic thresholds**, not probabilities. A score of `0.80`, for example, does **not** mean the chatbot is 80% certain that its answer is correct.
+> ⚠️ **Note:** These confidence levels are heuristic thresholds, not probabilities.
 
-## Dataset
+For example, a similarity score of `0.80` does **not** mean that the chatbot is 80% certain that the answer is correct.
 
-The chatbot expects a CSV knowledge base named:
+---
+
+# 💬 Streamlit Interface
+
+The application contains two main sections:
+
+| 💬 Chat                    | 📊 Result Analysis           |
+| -------------------------- | ---------------------------- |
+| Ask questions              | View query statistics        |
+| View chatbot responses     | Analyze similarity scores    |
+| See confidence warnings    | View confidence distribution |
+| See best-matching question | Track cumulative accuracy    |
+| View Top-3 matches         | Export results to CSV        |
+
+---
+
+## 📊 Dashboard Metrics
+
+The Result Analysis dashboard tracks:
+
+| Metric                      | Description                              |
+| --------------------------- | ---------------------------------------- |
+| **Total Queries**           | Total number of submitted queries        |
+| **Answered Queries**        | Queries for which an answer was returned |
+| **Average Match Score**     | Average cosine similarity score          |
+| **Accuracy**                | High + Medium confidence queries         |
+| **High Confidence Queries** | Queries classified as High confidence    |
+
+### Additional Visualizations
+
+* 📈 **Score Distribution**
+* 🎯 **Confidence Tier Breakdown**
+* 📊 **Match Score per Query**
+* 📉 **Cumulative Accuracy**
+* 📋 **Detailed Query Results**
+
+Results can also be exported as:
+
+```text
+nlp_results.csv
+```
+
+---
+
+# 🗂️ Dataset
+
+The chatbot uses a CSV-based knowledge base:
 
 ```text
 dataset.csv
 ```
 
-The CSV must contain at least two columns:
+The dataset must contain at least two columns:
 
 ```text
 Question,Answer
 ```
 
-Example:
+### Example
 
 ```csv
 Question,Answer
@@ -218,88 +271,14 @@ Question,Answer
 "What is machine learning?","Machine learning is a branch of AI..."
 ```
 
-The questions are used as the searchable knowledge base, while the corresponding answers are returned when a sufficiently similar question is found.
+| Column     | Purpose                                    |
+| ---------- | ------------------------------------------ |
+| `Question` | Used for similarity matching               |
+| `Answer`   | Returned when a relevant question is found |
 
-## Streamlit Interface
+---
 
-The application contains two main sections.
-
-### 💬 Chat
-
-The Chat tab provides the main chatbot interface.
-
-It displays:
-
-* User questions
-* Chatbot responses
-* Confidence warnings
-* Best matching dataset question
-* Top-3 matching questions and their similarity scores
-
-### 📊 Result Analysis
-
-The Result Analysis tab provides analytical information about the queries submitted during the current Streamlit session.
-
-#### Key Performance Indicators
-
-The dashboard displays:
-
-* **Total Queries**
-* **Answered Queries**
-* **Average Match Score**
-* **Accuracy**
-* **High Confidence Queries**
-
-#### Score Distribution
-
-Shows the distribution of cosine similarity scores across submitted queries and marks the confidence threshold zones.
-
-#### Confidence Tier Breakdown
-
-Displays how many queries were classified as:
-
-```text
-High
-Medium
-Low
-None
-```
-
-#### Match Score per Query
-
-Displays the similarity score for every query and visually identifies its confidence tier.
-
-#### Cumulative Accuracy
-
-The dashboard calculates running accuracy as:
-
-```text
-High + Medium queries
-────────────────────── × 100
-    Total queries
-```
-
-Medium-confidence matches are therefore counted as successful for this project-level metric.
-
-#### Detailed Results
-
-Each processed query is recorded with:
-
-```text
-Query
-Matched Question
-Score
-Confidence
-Answered
-```
-
-Results can also be exported as:
-
-```text
-nlp_results.csv
-```
-
-## Project Structure
+# 📁 Project Structure
 
 ```text
 academic-nlp-chatbot/
@@ -311,70 +290,51 @@ academic-nlp-chatbot/
 └── README.md
 ```
 
-### `chatbot.py`
-
-Contains the NLP and chatbot logic:
-
-* Dataset loading
-* Text preprocessing
-* TF-IDF vectorization
-* Cosine similarity
-* Confidence classification
-* Small-talk handling
-* Top-N matching
-* Response generation
-
-### `app.py`
-
-Contains the Streamlit application:
-
-* Chat interface
-* Session state
-* Result logging
-* Analysis dashboard
-* Charts
-* CSV export
-
-### `dataset.csv`
-
-Contains the chatbot's question-answer knowledge base.
+| File               | Description                                                                                                     |
+| ------------------ | --------------------------------------------------------------------------------------------------------------- |
+| `chatbot.py`       | Handles NLP processing, vectorization, similarity matching, confidence classification, and response generation. |
+| `app.py`           | Contains the Streamlit interface, session handling, dashboard, charts, and CSV export.                          |
+| `dataset.csv`      | Stores the chatbot's question-answer knowledge base.                                                            |
+| `requirements.txt` | Contains project dependencies.                                                                                  |
 
 ---
 
-## Installation
+# ⚙️ Installation & Setup
 
-### 1. Clone the repository
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone <repository-url>
 cd academic-nlp-chatbot
 ```
 
-### 2. Create a virtual environment
+### 2️⃣ Create a Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate it on Windows:
+### Activate the Environment
+
+**Windows**
 
 ```bash
 venv\Scripts\activate
 ```
 
-On macOS/Linux:
+**macOS/Linux**
 
 ```bash
 source venv/bin/activate
 ```
 
-### 3. Install dependencies
+### 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-A suitable `requirements.txt` is:
+Your `requirements.txt` should include:
 
 ```text
 pandas
@@ -385,7 +345,7 @@ matplotlib
 numpy
 ```
 
-### 4. Run the application
+### 4️⃣ Run the Application
 
 ```bash
 streamlit run app.py
@@ -395,9 +355,9 @@ The application will open in your browser.
 
 ---
 
-## NLTK Resources
+# 📚 NLTK Resources
 
-The application automatically downloads the required NLTK resources on its first launch:
+The application automatically downloads the required NLTK resources during its first launch:
 
 ```python
 nltk.download('punkt', quiet=True)
@@ -406,11 +366,11 @@ nltk.download('stopwords', quiet=True)
 nltk.download('wordnet', quiet=True)
 ```
 
-Therefore, no separate manual NLTK corpus setup is required.
+No separate manual NLTK corpus setup is required.
 
 ---
 
-## Example
+# 🧪 Example
 
 Suppose the dataset contains:
 
@@ -419,51 +379,48 @@ Question:
 What is TF-IDF?
 
 Answer:
-TF-IDF is a numerical representation that measures the importance of a word in a document relative to a collection of documents.
+TF-IDF is a numerical representation that measures the importance
+of a word in a document relative to a collection of documents.
 ```
 
-A user could ask:
+The user asks:
 
 ```text
 Can you explain TF IDF?
 ```
 
-The chatbot preprocesses the query, converts it into a TF-IDF vector, compares it with the dataset questions, and calculates the cosine similarity.
-
-If the resulting score is:
+The processing flow becomes:
 
 ```text
-0.78
+User Query
+    ↓
+Text Preprocessing
+    ↓
+TF-IDF Vectorization
+    ↓
+Cosine Similarity
+    ↓
+Similarity Score: 0.78
+    ↓
+🟢 High Confidence
+    ↓
+Return Matching Answer
 ```
-
-the query is classified as:
-
-```text
-High Confidence
-```
-
-and the corresponding answer is returned.
 
 ---
 
-## Limitations
+# ⚠️ Limitations
 
-This chatbot is intentionally based on **retrieval rather than generative NLP**.
+| Limitation                    | Description                                                       |
+| ----------------------------- | ----------------------------------------------------------------- |
+| **Retrieval-Based System**    | The chatbot does not generate new answers using a language model. |
+| **Dataset Dependency**        | Response quality depends heavily on the knowledge base.           |
+| **Semantic Limitations**      | Synonyms and paraphrases may receive lower similarity scores.     |
+| **Manual Thresholds**         | Confidence thresholds are heuristic and manually selected.        |
+| **No Conversational Context** | Each question is processed independently.                         |
+| **Exact Small-Talk Matching** | Small-talk detection relies on exact trigger strings.             |
 
-It does not generate new answers using a language model. Instead, it retrieves the answer associated with the most similar question in the dataset.
-
-Consequently:
-
-* It cannot reliably answer questions outside the dataset's domain.
-* Similar wording does not necessarily imply semantic equivalence.
-* Synonyms and paraphrases may receive relatively low similarity scores.
-* The quality of responses depends heavily on the dataset.
-* Confidence thresholds are manually selected heuristics.
-* Cosine similarity is not a true measure of answer correctness.
-* The chatbot does not maintain conversational context between questions.
-* Small-talk detection is based on exact string matching.
-
-For example, these inputs may not behave identically:
+For example:
 
 ```text
 hello
@@ -472,45 +429,51 @@ hey there
 good morning
 ```
 
-because the current small-talk implementation checks exact trigger strings rather than using semantic matching.
+may not all behave identically because the current small-talk system uses exact matching rather than semantic understanding.
 
 ---
 
-## Technologies Used
+# 🛠️ Technologies Used
 
-| Technology   | Purpose                                          |
-| ------------ | ------------------------------------------------ |
-| Python       | Core programming language                        |
-| NLTK         | Tokenization, stopword removal and lemmatization |
-| Pandas       | Dataset loading and result analysis              |
-| Scikit-learn | TF-IDF and cosine similarity                     |
-| NumPy        | Numerical operations                             |
-| Matplotlib   | Data visualization                               |
-| Streamlit    | Web interface and dashboard                      |
-
----
-
-## Future Improvements
-
-Possible improvements include:
-
-* Replace TF-IDF with **semantic embeddings** such as Sentence-BERT.
-* Add fuzzy/semantic small-talk detection.
-* Support conversational context.
-* Improve confidence calibration using a labelled evaluation dataset.
-* Add a proper train/test evaluation pipeline.
-* Introduce precision, recall and F1-score evaluation.
-* Add an administrator interface for updating the knowledge base.
-* Persist query logs instead of storing them only in Streamlit session state.
-* Add multilingual NLP support.
-* Use a hybrid retrieval system combining lexical and semantic similarity.
+| Technology          | Purpose                                           |
+| ------------------- | ------------------------------------------------- |
+| 🐍 **Python**       | Core programming language                         |
+| 📝 **NLTK**         | Tokenization, stopword removal, and lemmatization |
+| 🐼 **Pandas**       | Dataset loading and result analysis               |
+| 🤖 **Scikit-learn** | TF-IDF vectorization and cosine similarity        |
+| 🔢 **NumPy**        | Numerical operations                              |
+| 📊 **Matplotlib**   | Data visualization                                |
+| 🚀 **Streamlit**    | Interactive web interface and analytics dashboard |
 
 ---
 
-## Conclusion
+# 🔮 Future Improvements
 
-This project demonstrates how a lightweight NLP-based question-answering system can be built without a large language model.
+* 🧠 Replace TF-IDF with **semantic embeddings** such as Sentence-BERT.
+* 💬 Add fuzzy or semantic small-talk detection.
+* 🗣️ Support conversational context.
+* 🎯 Improve confidence calibration using a labelled evaluation dataset.
+* 📊 Add a proper train/test evaluation pipeline.
+* 📈 Introduce **Precision, Recall, and F1-score** evaluation.
+* 🛠️ Add an administrator interface for updating the knowledge base.
+* 💾 Persist query logs instead of storing them only in Streamlit session state.
+* 🌍 Add multilingual NLP support.
+* 🔀 Build a hybrid retrieval system combining lexical and semantic similarity.
 
-The chatbot combines **text preprocessing, TF-IDF feature extraction, cosine similarity, heuristic confidence classification, and interactive Streamlit visualization** to create an interpretable academic question-answering system.
+---
 
-The result analysis dashboard provides additional visibility into how confidently the system is matching user queries against its knowledge base.
+# 🎓 Conclusion
+
+The **Academic NLP Chatbot** demonstrates how a lightweight question-answering system can be built without relying on a large language model.
+
+The project combines:
+
+> **Text Preprocessing → TF-IDF → Cosine Similarity → Confidence Classification → Interactive Analytics**
+
+This creates an interpretable academic question-answering system while providing visibility into **similarity scores, confidence levels, matching results, and query performance**.
+
+---
+
+<p align="center">
+  Built with ❤️ using <b>Python · NLTK · Scikit-learn · Streamlit</b>
+</p>
