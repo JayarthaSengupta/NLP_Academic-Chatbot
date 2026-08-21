@@ -1,0 +1,47 @@
+Question,Answer
+What is NLP,NLP stands for Natural Language Processing which enables computers to understand human language.
+Why is NLP difficult,NLP is difficult because human language is ambiguous complex and context dependent.
+Difference between programming language and natural language,Programming languages follow strict syntax while natural languages are flexible ambiguous and context dependent.
+What are stages of NLP,The main stages of NLP are lexical analysis syntactic analysis semantic analysis discourse integration and pragmatic analysis.
+What is tokenization,Tokenization is the process of splitting text into smaller units called tokens.
+What is stemming,Stemming reduces words to their root form by removing suffixes.
+What is lemmatization,Lemmatization converts words to their base dictionary form.
+What is part of speech tagging,POS tagging assigns grammatical tags like noun verb or adjective to words.
+What is morphology,Morphology studies the structure and formation of words.
+What are morphemes,Morphemes are the smallest units of meaning in a language.
+What is inflectional morphology,Inflectional morphology modifies words to express grammatical relationships such as tense number or gender.
+What is derivational morphology,Derivational morphology creates new words by adding prefixes or suffixes.
+What is syntactic analysis,Syntactic analysis studies sentence structure using grammar rules.
+What is parsing,Parsing is the process of analyzing sentence structure based on grammar rules.
+What is probabilistic context free grammar,PCFG assigns probabilities to grammar rules for better parsing decisions.
+What is semantic analysis,Semantic analysis determines the meaning of words and sentences.
+What is homonymy,Homonymy occurs when words have the same spelling or pronunciation but different meanings.
+What is polysemy,Polysemy occurs when a word has multiple related meanings.
+What is synonymy,Synonymy refers to different words having similar meanings.
+What is hyponymy,Hyponymy describes a relationship where one word is a subtype of another word.
+What is WordNet,WordNet is a lexical database that groups words into sets of synonyms called synsets.
+What is word sense disambiguation,Word sense disambiguation identifies the correct meaning of a word based on context.
+What is language model,A language model predicts the probability of word sequences.
+What is Markov model,Markov model assumes that the probability of a word depends only on the previous word.
+What is n gram model,N gram model predicts a word based on the previous n minus one words.
+What is bag of words,Bag of words represents text as a collection of words ignoring grammar and order.
+What is TF IDF,TF IDF measures the importance of a word in a document relative to a collection of documents.
+What is word2vec,Word2vec is a technique that converts words into numerical vectors based on context.
+What is BERT,BERT is a transformer based model that generates contextual word embeddings.
+What is topic modelling,Topic modelling is a technique used to discover hidden topics in text documents.
+What is LDA,Latent Dirichlet Allocation is a probabilistic model used for topic modelling.
+What is information retrieval,Information retrieval is the process of finding relevant information from large text collections.
+What is vector space model,Vector space model represents documents and queries as vectors to measure similarity.
+What is named entity recognition,NER identifies entities such as person location and organization in text.
+What is relation extraction,Relation extraction identifies relationships between entities in text.
+What is coreference resolution,Coreference resolution identifies when different words refer to the same entity.
+What is NLTK,NLTK is a Python library used for natural language processing tasks.
+What is spaCy,spaCy is an advanced NLP library used for efficient text processing.
+What is sentiment analysis,Sentiment analysis determines whether text expresses positive negative or neutral sentiment.
+What is machine translation,Machine translation automatically translates text from one language to another.
+What is question answering system,Question answering systems automatically answer questions using NLP techniques.
+What is chatbot,A chatbot is a conversational program that interacts with users using natural language.
+What is machine learning,Machine learning is a field of AI where systems learn patterns from data.
+What is supervised learning,Supervised learning uses labeled data to train models.
+What is unsupervised learning,Unsupervised learning finds hidden patterns in unlabeled data.
+What is deep learning,Deep learning uses neural networks with multiple layers to learn complex patterns.
